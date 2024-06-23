@@ -9,6 +9,7 @@ import java.util.*;
 @Service
 public class JavaQuestionService implements QuestionService {
     private final Set<Question> questions = new HashSet<>();
+    private final Random random=new Random();
 
     @PostConstruct
     private void init() {
@@ -41,6 +42,11 @@ public class JavaQuestionService implements QuestionService {
         questions.add(questionModel);
         return questionModel;
     }
+    @Override
+    public Question add(Question question) {
+        questions.add(question);
+        return question;
+    }
 
     @Override
     public Question remove(String question,String answer) {
@@ -55,8 +61,9 @@ public class JavaQuestionService implements QuestionService {
     }
 
     @Override
-    public int getRandomQuestion() {
-        return new Random().nextInt(questions.size());
+    public Question getRandomQuestion() {
+        List<Question> elements = new ArrayList<>(getAll());
+        return elements.get(random.nextInt(questions.size()));
     }
 
 

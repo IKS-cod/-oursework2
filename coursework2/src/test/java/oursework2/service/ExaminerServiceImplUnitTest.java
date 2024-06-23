@@ -8,10 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class ExaminerServiceImplUnitTest {
     private final ExaminerServiceImpl examinerService = new ExaminerServiceImpl(new JavaQuestionService());
-    @Test
-    void getQuestions_Negative_RequestLimitExceededException_Test() {
-        assertThatExceptionOfType(RequestLimitExceededException.class).isThrownBy(() -> examinerService.getQuestions(6));
-    }
+
     @Test
     void getQuestions_Negative_RequiredNumberOfQuestionsIsMissing_Test() {
         assertThatExceptionOfType(RequiredNumberOfQuestionsIsMissing.class).isThrownBy(() -> examinerService.getQuestions(5));

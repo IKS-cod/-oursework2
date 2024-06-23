@@ -17,20 +17,43 @@ class JavaQuestionServiceTest {
 
     @Test
     void addTest() {
+        Set<Question>questionSet=new HashSet<>();
         Question expected = new Question("Что такое переменная?", "Область в памяти компьютера для " +
                 "хранения данных, которой можно присвоить имя");
+        questionSet.add(expected);
         Question actual = javaQuestionService.add("Что такое переменная?", "Область в памяти компьютера для " +
                 "хранения данных, которой можно присвоить имя");
         assertThat(actual).isEqualTo(expected);
+        assertEquals(questionSet,javaQuestionService.getAll());
+    }
+    @Test
+    void addTwoTest() {
+        Set<Question>questionSet=new HashSet<>();
+        Question expected = new Question("Что такое переменная?", "Область в памяти компьютера для " +
+                "хранения данных, которой можно присвоить имя");
+        questionSet.add(expected);
+        Question question=new Question("Что такое переменная?","Область в памяти компьютера для " +
+                "хранения данных, которой можно присвоить имя");
+        Question actual = javaQuestionService.add(question);
+        assertThat(actual).isEqualTo(expected);
+        assertEquals(questionSet,javaQuestionService.getAll());
     }
 
     @Test
     void removeTest() {
+        Set<Question>questionSet=new HashSet<>();
         Question expected = new Question("Что такое переменная?", "Область в памяти компьютера для " +
                 "хранения данных, которой можно присвоить имя");
+        Question actualOne = javaQuestionService.add("Что такое переменная?", "Область в памяти компьютера для " +
+                "хранения данных, которой можно присвоить имя");
+        questionSet.add(actualOne);
+        assertEquals(questionSet,javaQuestionService.getAll());
         Question actual = javaQuestionService.remove("Что такое переменная?", "Область в памяти компьютера для " +
                 "хранения данных, которой можно присвоить имя");
+        Set<Question>questionSetActual=new HashSet<>(javaQuestionService.getAll());
+        assertTrue(questionSetActual.isEmpty());
         assertThat(actual).isEqualTo(expected);
+
     }
 
     @Test

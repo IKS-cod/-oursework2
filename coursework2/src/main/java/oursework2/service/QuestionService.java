@@ -8,10 +8,11 @@ import java.util.Collections;
 @Service
 public interface QuestionService {
     public Question add(String question,String answer);
+    public Question add(Question question);
 
     public Question remove(String question,String answer);
 
     public Collection<Question> getAll();
 
-    public int getRandomQuestion();
+    public Question getRandomQuestion();
 }

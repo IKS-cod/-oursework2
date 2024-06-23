@@ -10,9 +10,9 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/exam")
 public class ExamController {
-    private final ExaminerServiceImpl examinerService;
+    private final ExaminerService examinerService;
 
-    public ExamController(ExaminerServiceImpl examinerService) {
+    public ExamController(ExaminerService examinerService) {
         this.examinerService = examinerService;
     }
 
